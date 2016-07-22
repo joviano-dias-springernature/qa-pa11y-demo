@@ -3,4 +3,4 @@ code:
   image: te-docker.docker-registry.tools.springer-sbm.com/fig-env-pa11y
   dns: *DNS
   volumes:
-    - ..:/home/dev/code
+    - .:/home/dev/code
