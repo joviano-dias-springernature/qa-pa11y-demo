@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+pushd "$DIR" >/dev/null 2>&1
+
+npm install
+
+if [ "$#" -gt 0 ]; then
+	echo "Running on environment $1"
+	export TEST_ENV=$1
+	node pa11y-tests/all/
+	#TO do: add env
+else
+	node pa11y-tests/all/
+fi
