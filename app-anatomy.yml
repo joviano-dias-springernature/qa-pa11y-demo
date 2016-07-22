@@ -1,1 +1,5 @@
+cf-username: linnaeus@groups.springer.com
+ci-server-host: te-prod-go-02.springer-sbm.com
+go-pipeline-group: qa
+require-hook-files: true
 test-artifact-dirs: ['reports']
