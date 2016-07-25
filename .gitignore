@@ -1,0 +1,4 @@
+# Ignore all logfiles, reports and tempfiles.
+reports
+node_modules
+.idea
