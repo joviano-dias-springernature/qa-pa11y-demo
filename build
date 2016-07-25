@@ -9,6 +9,9 @@ pushd "$DIR" >/dev/null 2>&1
 
 npm install
 
+mkdir -p ./reports
+rm -rf ./reports/*
+
 if [ "$#" -gt 0 ]; then
 	echo "Running on environment $1"
 	export TEST_ENV=$1
