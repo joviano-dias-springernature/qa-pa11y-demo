@@ -1,3 +1,75 @@
+Springer Nature qa-pa11y-demo
+=====
+
+This should be usable out of the box.
+Files needing modification
+
+    app-anatomy.yml
+    pa11y-tests/all/index.js
+    CONTACT.txt
+
+The _example_ directory should have sample js files that you could refer to
+
+The format of _pa11y-tests/all/index.js_ is as follows
+
+    //
+    //
+    * THIS BLOCK PERFORMS THINGS YOU NEED
+    * TO GET THE PAGE IN A STATE BEFORE PA11Y ANALYSES IT
+    //
+    //
+            var testAfterLogin = pa11y({
+
+            {code}
+                        var title = document.querySelector('#manuscript-title');
+                        var abstract = document.querySelector('#manuscript-body');
+                        var suggestButton = document.querySelector('#suggest');
+
+                        title.value = 'Geology';
+                        abstract.value = 'Geology of rocks';
+
+                        suggestButton.click(document.get);
+            });
+    //
+    //
+    * THIS IS A BASIC BLOCK
+    * i.e DO NOTHING BEFORE RUNNING A TEST
+    //
+    //
+            var testWithoutLogin = pa11y({
+            {code}
+            });
+    //
+    //
+    *SPECIFY YOUR URLS
+    *
+    //
+            var urls = {
+                home: "http://transfers-portal-dev.dev.cf.private.springer.com/",
+                resubmit: "http://transfers-portal-dev.dev.cf.private.springer.com/select-journal?journalId=10532"
+            };
+
+    //
+    //
+    * RUN THE TESTS
+    *
+    //
+            executionSeries = ['home','resubmit']
+            async.series({
+                home: testAfterLogin.run.bind(testAfterLogin, urls.home),
+                resubmit: testWithoutLogin.run.bind(testWithoutLogin, urls.resubmit)
+            });
+    //
+    //
+    * GENERATE REPORTS
+    *
+    //
+            function writeReportToHTML(htmlText, fileName) {
+            }
+
+            function removeExistingReports() {
+            }
+
 
 pa11y
 =====
